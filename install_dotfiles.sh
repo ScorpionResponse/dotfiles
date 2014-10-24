@@ -35,6 +35,7 @@ function link_dotfolders {
                 echo "Real folder at ~/.${dotfolder}.  Saving as ~/.${dotfolder}_bak"
                 mv ~/".${dotfolder}" ~/".${dotfolder}_bak"
             fi
+            # Don't link these, just copy to not screw up git
             cp -r "${DIR}/dotfolders/${dotfolder}" ~/".${dotfolder}"
         fi
     done
