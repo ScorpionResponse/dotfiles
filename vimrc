@@ -70,6 +70,7 @@ NeoBundleCheck
 set history=777
 
 " Filetype
+filetype on
 filetype plugin on
 filetype plugin indent on
 
