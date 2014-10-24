@@ -7,7 +7,7 @@ Why are you even looking at this?
 
 # Purpose #
 
-I wanted a place to store my dotfiles.
+I wanted a place to store my dotfiles for stuff.
 
 # License #
 
