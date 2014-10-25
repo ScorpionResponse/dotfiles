@@ -25,12 +25,12 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => NeoBundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has('vim_starting')
+"if has('vim_starting')
   set nocompatible
 
   " Required:
   set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
+"endif
 
 " Required:
 call neobundle#begin(expand('~/.vim/bundle'))
@@ -296,6 +296,7 @@ autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
 autocmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=gitcommit
+autocmd FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
