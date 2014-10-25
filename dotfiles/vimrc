@@ -21,16 +21,15 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+set nocompatible
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => NeoBundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"if has('vim_starting')
-  set nocompatible
 
-  " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-"endif
+" Required:
+set runtimepath+=~/.vim/bundle/neobundle.vim/
 
 " Required:
 call neobundle#begin(expand('~/.vim/bundle'))
@@ -51,13 +50,27 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'flazz/vim-colorschemes'
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'rkulla/pydiction'
+" Fuzzy file finder/opener
+"NeoBundle 'kien/ctrlp.vim'
+" A bunch of colorschemes # lazy
+" NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'altercation/vim-colors-solarized'
+" I have no idea why I would use this
+" A shell in vim
+"NeoBundle 'Shougo/vimshell'
+" Autocomplete for python
+"NeoBundle 'rkulla/pydiction'
 NeoBundle 'klen/python-mode'
 NeoBundle 'vim-scripts/TaskList.vim'
 NeoBundle 'scrooloose/syntastic'
+
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'Shougo/neocomplcache.vim'
+NeoBundle 'spf13/vim-autoclose'
+NeoBundle 'bling/vim-airline'
+
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets'
 
 " You can specify revision/branch/tag.
 " NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
@@ -173,7 +186,27 @@ syntax enable
 "colorscheme gothic
 "colorscheme jhdark
 "colorscheme pablo
-colorscheme wargrey
+"colorscheme wargrey
+set background=dark
+colorscheme solarized
+
+if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
+    let g:solarized_termcolors=256
+    let g:solarized_termtrans=1
+    let g:solarized_contrast="normal"
+    let g:solarized_visibility="normal"
+endif
+
+if isdirectory(expand("~/.vim/bundle/vim-airline/"))
+    if !exists('g:airline_theme')
+        let g:airline_theme = 'solarized'
+    endif
+    if !exists('g:airline_powerline_fonts')
+        " Use the default set of separators with a few customizations
+        let g:airline_left_sep='>'  " Slightly fancier than '>'
+        let g:airline_right_sep='<' " Slightly fancier than '<'
+    endif
+endif
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -298,6 +331,14 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 autocmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=gitcommit
 autocmd FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
+" Trigger configuration. Do not use <tab> if you use
+" https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+""let g:UltiSnipsEditSplit="vertical"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -309,6 +350,9 @@ set spelllang=en_us
 
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
+
+" Path to pydiction dictionary
+let g:pydiction_location = '/home/user/.vim/bundle/pydiction/complete-dict'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
