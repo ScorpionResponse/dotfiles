@@ -33,6 +33,9 @@ function link_dotfolders {
             echo "Installing $dotfolder"
             if [ -d ~/".${dotfolder}" ]; then
                 echo "Real folder at ~/.${dotfolder}.  Saving as ~/.${dotfolder}_bak"
+                if [ -d ~/".${dotfolder}_bak" ]; then
+                    rm -rf ~/".${dotfolder}_bak"
+                fi
                 mv ~/".${dotfolder}" ~/".${dotfolder}_bak"
             fi
             # Don't link these, just copy to not screw up git
