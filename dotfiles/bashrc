@@ -78,13 +78,8 @@ if [ -f ~/.bashrc_local ]; then
 fi
 
 # Automatically start or attach to tmux
-if [[ ! -z "$TMUX" ]]; then
-    tmux has-session &> /dev/null
-    if [ $? -eq 1 ]; then
-      exec tmux new
-      exit
-    else
-      exec tmux attach
-      exit
-    fi
+# TMUX
+if which tmux >/dev/null 2>&1; then
+    #if not inside a tmux session, and if no session is started, start a new session
+    test -z "$TMUX" && (tmux attach || tmux new-session)
 fi
