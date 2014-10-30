@@ -197,6 +197,8 @@ if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"
     let g:solarized_visibility="normal"
 endif
 
+let g:airline_theme = 'laederon'
+
 if isdirectory(expand("~/.vim/bundle/vim-airline/"))
     if !exists('g:airline_theme')
         let g:airline_theme = 'solarized'
