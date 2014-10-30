@@ -3,4 +3,4 @@
 	name = Paul Moss
 
 [push]
-    default = simple
+    default = current
