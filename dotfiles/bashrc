@@ -77,6 +77,8 @@ if [ -f ~/.bashrc_local ]; then
     source ~/.bashrc_local
 fi
 
+alias tmux="TERM=screen-256color-bce tmux"
+
 # Automatically start or attach to tmux
 # TMUX
 if which tmux >/dev/null 2>&1; then

@@ -188,14 +188,14 @@ syntax enable
 "colorscheme pablo
 "colorscheme wargrey
 set background=dark
-colorscheme solarized
 
 if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
     let g:solarized_termcolors=256
     let g:solarized_termtrans=1
-    let g:solarized_contrast="normal"
-    let g:solarized_visibility="normal"
+    let g:solarized_contrast="high"
+    let g:solarized_visibility="high"
 endif
+colorscheme solarized
 
 let g:airline_theme = 'laederon'
 
@@ -208,14 +208,6 @@ if isdirectory(expand("~/.vim/bundle/vim-airline/"))
         let g:airline_left_sep='>'  " Slightly fancier than '>'
         let g:airline_right_sep='<' " Slightly fancier than '<'
     endif
-endif
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T
-    set guioptions+=e
-    set t_Co=256
-    set guitablabel=%M\ %t
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
