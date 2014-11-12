@@ -72,6 +72,8 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
 
+NeoBundle 'Yggdroot/indentLine'
+
 " You can specify revision/branch/tag.
 " NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
 
