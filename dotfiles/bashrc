@@ -81,10 +81,10 @@ alias tmux="TERM=screen-256color-bce tmux"
 
 # Automatically start or attach to tmux
 # TMUX
-if which tmux >/dev/null 2>&1; then
-    # Don't run this as root
-    if [[ $EUID -ne 0 ]]; then
-        #if not inside a tmux session, and if no session is started, start a new session
-        test -z "$TMUX" && (tmux attach || tmux new-session)
-    fi
-fi
+#if which tmux >/dev/null 2>&1; then
+#    # Don't run this as root
+#    if [[ $EUID -ne 0 ]]; then
+#        #if not inside a tmux session, and if no session is started, start a new session
+#        test -z "$TMUX" && (tmux attach || tmux new-session)
+#    fi
+#fi
