@@ -68,6 +68,7 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'spf13/vim-autoclose'
 NeoBundle 'bling/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
 
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
