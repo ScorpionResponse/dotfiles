@@ -66,7 +66,8 @@ NeoBundle 'scrooloose/syntastic'
 
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'Shougo/neocomplcache.vim'
-NeoBundle 'spf13/vim-autoclose'
+"NeoBundle 'spf13/vim-autoclose'
+NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 
