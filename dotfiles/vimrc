@@ -53,7 +53,7 @@ NeoBundle 'tpope/vim-fugitive'
 " Fuzzy file finder/opener
 "NeoBundle 'kien/ctrlp.vim'
 " A bunch of colorschemes # lazy
-" NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'altercation/vim-colors-solarized'
 " I have no idea why I would use this
 " A shell in vim
@@ -68,7 +68,7 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'Shougo/neocomplcache.vim'
 "NeoBundle 'spf13/vim-autoclose'
 NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'bling/vim-airline'
+NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 
 NeoBundle 'SirVer/ultisnips'
@@ -190,23 +190,15 @@ syntax enable
 "colorscheme gothic
 "colorscheme jhdark
 "colorscheme pablo
-"colorscheme wargrey
+colorscheme wargrey
 set background=dark
 
-if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
-    let g:solarized_termcolors=256
-    let g:solarized_termtrans=1
-    let g:solarized_contrast="high"
-    let g:solarized_visibility="high"
-endif
-colorscheme solarized
+" Set color palette
+"set t_Co=88
 
-let g:airline_theme = 'laederon'
+let g:airline_theme='laederon'
 
 if isdirectory(expand("~/.vim/bundle/vim-airline/"))
-    if !exists('g:airline_theme')
-        let g:airline_theme = 'solarized'
-    endif
     if !exists('g:airline_powerline_fonts')
         " Use the default set of separators with a few customizations
         let g:airline_left_sep='>'  " Slightly fancier than '>'
