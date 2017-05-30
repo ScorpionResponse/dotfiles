@@ -365,6 +365,8 @@ map <leader>pp :setlocal paste!<cr>
 " Turn off rope
 let g:pymode_rope = 0
 
+" Don't auto-line break html files
+autocmd FileType html,htmldjango setlocal textwidth=0 wrapmargin=0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
