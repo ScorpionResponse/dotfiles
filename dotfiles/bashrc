@@ -1,6 +1,7 @@
 # No emacs, never emacs
 alias vi=vim
 export EDITOR=vim
+export TERM="xterm-256color"
 
 # If a non-zero return from a command, print it
 export PROMPT_COMMAND='ret=$?; if [ $ret -ne 0 ] ; then echo -e "ret: \033[01;31m$ret\033[00;00m"; fi'
