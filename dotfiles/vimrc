@@ -3,7 +3,7 @@
 " 
 " Website: http://scorpionresponse.com/
 "
-" Version: 1.0 - 2014-10-23
+" Version: 1.1 - 2018
 "
 " Sections:
 "    -> NeoBundle
@@ -22,7 +22,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set nocompatible
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => NeoBundle
@@ -46,38 +45,37 @@ NeoBundle 'Shougo/vimproc', {
             \    },
             \ }
 
-" Add or remove your Bundles here:
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'tpope/vim-fugitive'
-" Fuzzy file finder/opener
-"NeoBundle 'kien/ctrlp.vim'
-" A bunch of colorschemes # lazy
-NeoBundle 'flazz/vim-colorschemes'
-NeoBundle 'altercation/vim-colors-solarized'
-" I have no idea why I would use this
-" A shell in vim
-"NeoBundle 'Shougo/vimshell'
-" Autocomplete for python
-"NeoBundle 'rkulla/pydiction'
-NeoBundle 'klen/python-mode'
-NeoBundle 'vim-scripts/TaskList.vim'
-NeoBundle 'scrooloose/syntastic'
 
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'Shougo/neocomplcache.vim'
-"NeoBundle 'spf13/vim-autoclose'
-NeoBundle 'Raimondi/delimitMate'
+" Colorschemes / UI
+NeoBundle 'dracula/vim'
+" NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
+NeoBundle 'scrooloose/syntastic'
 
+" Various language libs
+NeoBundle 'klen/python-mode'
+NeoBundle 'reasonml-editor/vim-reason-plus'
+NeoBundle 'elixir-editors/vim-elixir'
+NeoBundle 'ekalinin/Dockerfile.vim'
+NeoBundle 'mrk21/yaml-vim'
+
+" Utils
+NeoBundle 'vim-scripts/TaskList.vim'
+NeoBundle 'scrooloose/nerdcommenter'
+" NeoBundle 'Shougo/neocomplcache.vim'
+NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
-
 NeoBundle 'Yggdroot/indentLine'
 
-" You can specify revision/branch/tag.
-" NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
+" Deoplete
+NeoBundle 'Shougo/deoplete.nvim'
+NeoBundle 'roxma/nvim-yarp'
+NeoBundle 'roxma/vim-hug-neovim-rpc'
 
 " Required:
 call neobundle#end()
@@ -109,7 +107,6 @@ let g:mapleader = ","
 
 " Fast saving
 nmap <leader>w :w!<cr>
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -177,7 +174,6 @@ set rnu
 " % will switch between opening and closing brackets/other
 runtime macros/matchit.vim
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -191,22 +187,17 @@ syntax enable
 "colorscheme jhdark
 "colorscheme pablo
 "colorscheme wargrey
-set background=dark
+"colorscheme peachpuff
+"set background=dark
+colorscheme dracula
 
 " Set color palette
 "set t_Co=88
+"colorscheme solarized
 
-colorscheme solarized
-
-let g:airline_theme='laederon'
-
-if isdirectory(expand("~/.vim/bundle/vim-airline/"))
-    if !exists('g:airline_powerline_fonts')
-        " Use the default set of separators with a few customizations
-        let g:airline_left_sep='>'  " Slightly fancier than '>'
-        let g:airline_right_sep='<' " Slightly fancier than '<'
-    endif
-endif
+"let g:airline_theme='laederon'
+let g:airline_theme='dracula'
+let g:airline_powerline_fonts = 1
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -216,22 +207,20 @@ set ffs=unix,dos,mac
 
 "set gfn=Droid\ Sans\ Mono\ 10
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Files, backups and undo
+" => Files and backups
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
 set nowb
 set noswapfile
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Lines longer than 79 columns are broken
-set textwidth=79
+" Lines longer than 100 columns are broken
+set textwidth=100
 
 " >> indents 4 columns
 set shiftwidth=4
@@ -240,10 +229,10 @@ set shiftwidth=4
 set tabstop=4
 
 " Insert spaces instead of tabs
-set expandtab
+" set expandtab
 
 " insert/delete 4 spaces when hitting TAB/BACKSPACE
-set softtabstop=4
+" set softtabstop=4
 
 " round indent to multiple of 'shiftwidth'
 set shiftround
@@ -253,7 +242,6 @@ set autoindent
 
 " No folding
 set nofoldenable
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
@@ -288,7 +276,6 @@ autocmd BufReadPost *
 set viminfo^=%
 "set viminfo='100,\"50
 
-
 """"""""""""""""""""""""""""""
 " => Status line
 """"""""""""""""""""""""""""""
@@ -320,8 +307,6 @@ func! DeleteTrailingWS()
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
 autocmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=gitcommit
 autocmd FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
@@ -346,10 +331,6 @@ set spelllang=en_us
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
 
-" Path to pydiction dictionary
-let g:pydiction_location = '/home/user/.vim/bundle/pydiction/complete-dict'
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -361,12 +342,6 @@ map <leader>q :e ~/buffer<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
-
-" Turn off rope
-let g:pymode_rope = 0
-
-" Don't auto-line break html files
-autocmd FileType html,htmldjango setlocal textwidth=0 wrapmargin=0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
@@ -400,3 +375,6 @@ function! <SID>BufcloseCloseIt()
      execute("bdelete! ".l:currentBufNum)
    endif
 endfunction
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1

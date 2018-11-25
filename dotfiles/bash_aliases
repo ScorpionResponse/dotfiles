@@ -3,3 +3,12 @@
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+
+# tmux
+alias tmux="TERM=screen-256color-bce tmux"
+
+# Use neomutt
+alias mutt='neomutt'
+
+# Recently touched git branches
+alias recent='git branch --sort=-committerdate | head'
