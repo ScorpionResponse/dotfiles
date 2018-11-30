@@ -197,7 +197,7 @@ colorscheme dracula
 
 "let g:airline_theme='laederon'
 let g:airline_theme='dracula'
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
