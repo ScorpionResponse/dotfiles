@@ -47,6 +47,7 @@ NeoBundle 'Shougo/vimproc', {
 
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'tpope/vim-abolish'
 NeoBundle 'tpope/vim-fugitive'
 
 " Colorschemes / UI
@@ -76,6 +77,11 @@ NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'Shougo/deoplete.nvim'
 NeoBundle 'roxma/nvim-yarp'
 NeoBundle 'roxma/vim-hug-neovim-rpc'
+
+" Checkers/Prettier
+" NeoBundle 'sbdchd/neoformat'
+NeoBundle 'prettier/vim-prettier'
+NeoBundle 'w0rp/ale'
 
 " Required:
 call neobundle#end()
@@ -313,7 +319,7 @@ autocmd FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1
 
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<c-u>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
@@ -342,6 +348,9 @@ map <leader>q :e ~/buffer<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
+
+" Use formatprg when available
+"let g:neoformat_try_formatprg = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
@@ -378,3 +387,5 @@ endfunction
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_debug = 1
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"

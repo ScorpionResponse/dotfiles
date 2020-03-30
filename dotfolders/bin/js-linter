@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker exec -i $(docker-compose ps -q deals) npx eslint --config /home/app/react-core/eslintrc.json -f json --stdin --stdin-filename nothing.js

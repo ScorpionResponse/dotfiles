@@ -1,5 +1,5 @@
 [user]
-    email = moss.paul@gmail.com
+    email = paul.m@buysellads.com
     name = Paul Moss
 
 [push]
@@ -11,4 +11,4 @@
     lg = !"git lg1"
     co = checkout
     st = status
-    publish = !git push -u origin $(git rev-parse --abbrev-ref HEAD
+    publish = !git push -u origin $(git rev-parse --abbrev-ref HEAD)

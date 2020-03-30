@@ -49,3 +49,8 @@ if [ -d $HOME/go ]; then
     export GOPATH=$HOME/go
     export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 fi
+
+# Remove terminal color codes from text
+stripcolors() {
+	sed -e "s/\x1B\[[0-9;]*[JKmsu]//g"
+}

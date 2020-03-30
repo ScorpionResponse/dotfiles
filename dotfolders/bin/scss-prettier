@@ -1,0 +1,4 @@
+#!/bin/bash
+
+#docker exec -i $(docker-compose ps -q deals) npx prettier --stdin --parser babel --config react-core/prettier.json
+bsa deals format --stdin --stdin-filepath nothing.scss

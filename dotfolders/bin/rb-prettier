@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# docker exec -i $(docker-compose ps -q core) bundle exec rbprettier --stdin --parser ruby --config config/prettier.json
+bsa core format --stdin --parser ruby --stdin-filepath nothing.rb
