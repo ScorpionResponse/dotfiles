@@ -1,0 +1,17 @@
+{
+  "config": {
+    "default": "https://buysellads.phacility.com/"
+  },
+  "hosts": {
+    "https://buysellads.phacility.com/api/": {
+      "token": "cli-rzchbw3wb4nrn7engrzbpzilksbe"
+    }
+  },
+  "aliases": {
+    "merge": [
+      "land",
+      "--onto",
+      "master"
+    ]
+  }
+}
