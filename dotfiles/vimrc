@@ -3,10 +3,10 @@
 " 
 " Website: http://scorpionresponse.com/
 "
-" Version: 1.1 - 2018
+" Version: 1.2 - 2020
 "
 " Sections:
-"    -> NeoBundle
+"    -> vim-plug
 "    -> General
 "    -> VIM user interface
 "    -> Colors and Fonts
@@ -24,71 +24,66 @@
 set nocompatible
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => NeoBundle
+" => vim-plug
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Required:
-set runtimepath+=~/.vim/bundle/neobundle.vim/
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
 " Required:
-call neobundle#begin(expand('~/.vim/bundle'))
-
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
+call plug#begin('~/.vim/plugged')
 
 " vimproc install
-NeoBundle 'Shougo/vimproc', {
-            \ 'build' : {
-            \     'mac' : 'make -f make_mac.mak',
-            \     'unix' : 'make -f make_unix.mak',
-            \    },
-            \ }
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'tpope/vim-abolish'
-NeoBundle 'tpope/vim-fugitive'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-fugitive'
 
 " Colorschemes / UI
-NeoBundle 'dracula/vim'
-" NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
-NeoBundle 'scrooloose/syntastic'
+Plug 'dracula/vim'
+" Plug 'altercation/vim-colors-solarized'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'scrooloose/syntastic'
 
 " Various language libs
-NeoBundle 'klen/python-mode'
-NeoBundle 'reasonml-editor/vim-reason-plus'
-NeoBundle 'elixir-editors/vim-elixir'
-NeoBundle 'ekalinin/Dockerfile.vim'
-NeoBundle 'mrk21/yaml-vim'
+Plug 'klen/python-mode'
+Plug 'reasonml-editor/vim-reason-plus'
+Plug 'elixir-editors/vim-elixir'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'mrk21/yaml-vim'
 
 " Utils
-NeoBundle 'vim-scripts/TaskList.vim'
-NeoBundle 'scrooloose/nerdcommenter'
-" NeoBundle 'Shougo/neocomplcache.vim'
-NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'honza/vim-snippets'
-NeoBundle 'Yggdroot/indentLine'
+Plug 'vim-scripts/TaskList.vim'
+Plug 'scrooloose/nerdcommenter'
+" Plug 'Shougo/neocomplcache.vim'
+Plug 'Raimondi/delimitMate'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'Yggdroot/indentLine'
 
 " Deoplete
-NeoBundle 'Shougo/deoplete.nvim'
-NeoBundle 'roxma/nvim-yarp'
-NeoBundle 'roxma/vim-hug-neovim-rpc'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 
 " Checkers/Prettier
-" NeoBundle 'sbdchd/neoformat'
-NeoBundle 'prettier/vim-prettier'
-NeoBundle 'w0rp/ale'
+" Plug 'sbdchd/neoformat'
+Plug 'prettier/vim-prettier'
+Plug 'w0rp/ale'
 
 " Required:
-call neobundle#end()
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
+call plug#end()
 
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
